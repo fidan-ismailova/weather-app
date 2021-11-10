@@ -37,6 +37,7 @@
   padding: 0;
   border: 0;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -46,31 +47,55 @@ body {
   font-size: 14px;
   color: black;
   line-height: 1.5;
-  font-family: "Arial", "Helvetica", sans-serif;
+  font-family: "Open Sans", "Arial", "Helvetica", sans-serif;
   font-weight: 400;
   background-color: white;
   overflow-x: hidden;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: normal;
+}
+
 a {
+  text-decoration: none;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
 }
 
 button {
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
 .wrapper {
   display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
@@ -83,15 +108,80 @@ button {
 }
 
 .header {
-  background-color: aqua;
+  background: -webkit-gradient(linear, left top, left bottom, from(#323232), color-stop(40%, #3F3F3F), color-stop(150%, #1C1C1C)), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(200%, rgba(138, 137, 137, 0.25)));
+  background: -webkit-linear-gradient(top, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.4) 0%, rgba(138, 137, 137, 0.25) 200%);
+  background: -moz-linear-gradient(top, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), -moz-linear-gradient(bottom, rgba(255, 255, 255, 0.4) 0%, rgba(138, 137, 137, 0.25) 200%);
+  background: -o-linear-gradient(top, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), -o-linear-gradient(bottom, rgba(255, 255, 255, 0.4) 0%, rgba(138, 137, 137, 0.25) 200%);
+  background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(138, 137, 137, 0.25) 200%);
+  background-blend-mode: multiply;
+  color: white;
 }
 
 .header__body {
-  padding: 30px 0;
+  padding: 20px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.header__title {
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.header__title a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: inherit;
+}
+
+.no-webp .header__title a::before {
+  background-image: url("../images/logo.png"); }
+
+.header__title a::before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .main {
   -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -moz-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 10px 0;
@@ -117,5 +207,7 @@ button {
     width: 100%;
   }
 }
+
+.webp .header__title a::before { background-image: url(../images/logo.webp); }
 
 .webp .main__body { background-image: url(../images/polka-dots.webp); }
