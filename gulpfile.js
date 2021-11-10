@@ -85,7 +85,7 @@ function css() {
         .pipe(
             autoprefixer({
                 overrideBrowserslist: [
-                    "last 10 versions"
+                    "last 100 versions"
                 ],
                 browsers: [
                     'Android >= 4',
