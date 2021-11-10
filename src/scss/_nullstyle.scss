@@ -1,0 +1,44 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    font-size: 14px;
+    color: black;
+    line-height: 1.5;
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-weight: 400;
+    background-color: white;
+    overflow-x: hidden;
+}
+h1, h2, h3, h4, h5, h6 {
+    // font-size: inherit;
+    // font-weight: normal;
+}
+a {
+    // text-decoration: none;
+    @include transition;
+}
+input, button, textarea {
+    // font-family: inherit;
+}
+button {
+    cursor: pointer;
+    @include transition;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container {
+    max-width: #{$maxWidth};
+    padding: 0 10px;
+    margin: 0 auto;
+    @media (max-width: #{$maxWidth}) {
+        width: 100%;
+    }
+}

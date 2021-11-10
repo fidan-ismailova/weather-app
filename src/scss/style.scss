@@ -1,0 +1,42 @@
+@mixin font($fontName, $fileName, $weight, $style) {
+    @font-face {
+        font-family: $fontName;
+        font-display: swap;
+        src: url("../fonts/#{$fileName}.woff") format("woff"),
+            url("../fonts/#{$fileName}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}
+
+@import "_fonts";
+
+@mixin transition {
+    transition: all 0.3s ease-in-out;
+}
+
+$maxWidth: 1200px;
+
+@import "_nullstyle";
+
+.header {
+    background-color: aqua;
+    &__body {
+        padding: 30px 0;
+    }
+}
+.main {
+    flex: 1 1 auto;
+    padding: 10px 0;
+    &__body {
+        background-color: coral;
+        // background-image: url('../images/dot.gif');
+        background-image: url('../images/polka-dots.jpg');
+    }
+}
+.footer {
+    background-color: blueviolet;
+    &__body {
+        padding: 15px 0;
+    }
+}
