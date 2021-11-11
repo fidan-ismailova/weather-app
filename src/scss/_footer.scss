@@ -1,0 +1,36 @@
+.footer {
+    background-color: white;
+    border-top: 2px solid orange;
+    &__body {
+        padding: 15px 0;
+        @include flex;
+        // flex-wrap: wrap;
+    }
+    &__info {
+        padding: 0 10px;
+        min-width: 105px;
+        &.link {
+            a {
+                color: grey;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        &.year {
+            flex-grow: 1;
+            text-align: center;
+        }
+        &.code {
+            text-align: right;
+            a {
+                font-family: monospace;
+                color: blue;
+                font-size: 12px;
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

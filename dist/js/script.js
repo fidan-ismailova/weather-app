@@ -15,3 +15,4 @@ testWebP(function (support) {
     document.querySelector('body').classList.add('no-webp');
   }
 });
+document.querySelector(".year").textContent = "\xA9 " + new Date().getFullYear();

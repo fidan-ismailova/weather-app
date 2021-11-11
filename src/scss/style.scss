@@ -36,9 +36,5 @@ $maxWidth: 1200px;
         background-image: url('../images/polka-dots.jpg');
     }
 }
-.footer {
-    background-color: blueviolet;
-    &__body {
-        padding: 15px 0;
-    }
-}
+
+@import "_footer";

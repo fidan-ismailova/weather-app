@@ -195,11 +195,63 @@ button {
 }
 
 .footer {
-  background-color: blueviolet;
+  background-color: white;
+  border-top: 2px solid orange;
 }
 
 .footer__body {
   padding: 15px 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.footer__info {
+  padding: 0 10px;
+  min-width: 105px;
+}
+
+.footer__info.link a {
+  color: grey;
+}
+
+.footer__info.link a:hover {
+  text-decoration: underline;
+}
+
+.footer__info.year {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -moz-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.footer__info.code {
+  text-align: right;
+}
+
+.footer__info.code a {
+  font-family: monospace;
+  color: blue;
+  font-size: 12px;
+}
+
+.footer__info.code a:hover {
+  font-weight: bold;
 }
 
 @media (max-width: 1200px) {
