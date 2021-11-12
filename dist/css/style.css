@@ -266,9 +266,18 @@ button {
 }
 
 .main__card .card__desc {
+  position: relative;
   font-size: 0.9rem;
   line-height: 1.5;
   margin-top: 15px;
+}
+
+.main__card .card__desc svg {
+  position: relative;
+  top: 0.3rem;
+  margin: 0 5px;
+  height: 14pt;
+  fill: #1f62ef;
 }
 
 .main__card .card__body {
@@ -299,7 +308,7 @@ button {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.7);
   -webkit-box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.1);
   -moz-box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.1);
   box-shadow: 0 0 5px 5px rgba(128, 128, 128, 0.1);
