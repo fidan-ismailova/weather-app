@@ -346,6 +346,20 @@ button {
   flex-direction: column;
 }
 
+.main__search .search__form #search {
+  padding: 10px;
+  border: 1px solid #d3d3d3;
+  background-color: ghostwhite;
+}
+
+.main__search .search__form #search:focus {
+  outline: none;
+}
+
+.main__search .search__form #cities {
+  overflow-y: auto;
+}
+
 .footer {
   background-color: ghostwhite;
   border-top: 2px solid orange;
