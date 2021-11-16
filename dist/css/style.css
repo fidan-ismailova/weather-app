@@ -275,6 +275,7 @@ button {
   -ms-flex-item-align: start;
   align-self: flex-start;
   font-size: 1.5rem;
+  line-height: 1.5;
   color: white;
 }
 
