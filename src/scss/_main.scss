@@ -4,6 +4,7 @@
     &__body {
         @include flex;
         align-items: flex-start;
+        justify-content: space-around;
         padding: 10px;
         @media (max-width: 767px) {
             flex-direction: column-reverse;
@@ -26,9 +27,16 @@
                 width: 100%;
                 padding: 10px;
             }
+            &__date {
+                align-self: flex-end;
+                color: orange;
+                text-shadow: 0 0 1em white;
+                font-family: monospace;
+                font-weight: bold;
+            }
             &__title {
                 align-self: flex-start;
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 color: white;
             }
             &__icon {}
@@ -81,6 +89,9 @@
                     background-position: 10px 50%;
                     &:focus {
                         outline: none;
+                    }
+                    &::placeholder {
+                        font-family: monospace;
                     }
                 }
                 #cities {

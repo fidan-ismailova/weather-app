@@ -2,6 +2,7 @@
             <div class="main__body container">
                 <div class="main__card card">
                     <header class="card__header">
+                        <span class="card__date"></span>
                         <h1 class="card__title"></h1>
                         <div class="card__icon"></div>
                         <p class="card__desc"></p>
@@ -14,17 +15,9 @@
                     </section>
                 </div>
                 <div class="main__search search">
-                    <form action="/" method="get" class="search__form">
-                        <input type="search" name="" id="search" placeholder="Search city..." list="cities">
-                        <datalist id="cities">
-                            <option value="Chrome">Chrome 1</option>
-                            <option value="Chrome">Chrome 2</option>
-                            <option value="Firefox">
-                            <option value="Internet Explorer">
-                            <option value="Opera">
-                            <option value="Safari">
-                            <option value="Microsoft Edge">
-                        </datalist>
+                    <form action="" method="post" class="search__form">
+                        <input type="search" name="" id="search" list="cities">
+                        <datalist id="cities"></datalist>
                     </form>
                 </div>
             </div>

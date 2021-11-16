@@ -1,4 +1,5 @@
 @@include('_webp.js')
-@@include('_year.js')
 @@include('_winds.js')
 @@include('_data.js')
+@@include('_search.js')
+@@include('_year.js')

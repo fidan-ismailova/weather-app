@@ -208,6 +208,9 @@ button {
   -moz-box-align: start;
   -ms-flex-align: start;
   align-items: flex-start;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
   padding: 10px;
 }
 
@@ -257,11 +260,21 @@ button {
   padding: 10px;
 }
 
+.main__card .card__date {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  color: orange;
+  text-shadow: 0 0 1em white;
+  font-family: monospace;
+  font-weight: bold;
+}
+
 .main__card .card__title {
   -webkit-align-self: flex-start;
   -ms-flex-item-align: start;
   align-self: flex-start;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: white;
 }
 
@@ -362,6 +375,30 @@ button {
 
 .main__search .search__form #search:focus {
   outline: none;
+}
+
+.main__search .search__form #search::-webkit-input-placeholder {
+  font-family: monospace;
+}
+
+.main__search .search__form #search:-moz-placeholder {
+  font-family: monospace;
+}
+
+.main__search .search__form #search::-moz-placeholder {
+  font-family: monospace;
+}
+
+.main__search .search__form #search:-ms-input-placeholder {
+  font-family: monospace;
+}
+
+.main__search .search__form #search::-ms-input-placeholder {
+  font-family: monospace;
+}
+
+.main__search .search__form #search::placeholder {
+  font-family: monospace;
 }
 
 .main__search .search__form #cities {
