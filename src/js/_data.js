@@ -26,7 +26,7 @@ const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${appid}&units=
     .then(function (resp) { return resp.json() })
     .then(function (data) {
         document.querySelector('.card__date').textContent = '<date::time>';
-        document.querySelector('.card__title').textContent = data.name;
+        document.querySelector('.card__title').innerHTML = `${data.name} <span>${data.sys.country}</span>`;
         document.querySelector('.card__temp').innerHTML = Math.ceil(data.main.temp) + temp;
         document.querySelectorAll('.card__desc')[0].textContent = data.weather[0]['description'];
         document.querySelectorAll('.card__desc')[1].innerHTML = 

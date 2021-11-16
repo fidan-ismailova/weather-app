@@ -278,6 +278,12 @@ button {
   color: white;
 }
 
+.main__card .card__title span {
+  display: block;
+  margin: 0.5rem;
+  font-size: 0.8rem;
+}
+
 .main__card .card__desc {
   position: relative;
   font-size: 0.9rem;
