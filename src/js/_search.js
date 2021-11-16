@@ -3,16 +3,17 @@ let citiesList = `https://fidan-ismailova.github.io/database/openweathermap/city
 fetch(citiesList)
     .then(function (resp) { return resp.json() })
     .then(function (data) {
-        let country = 'AZ';
         let out = '';
         for (let i = 0; i < data.length; i++) {
-            if(data[i]['country'] == country) // один из вариантов быстрой загрузки
+            // один из вариантов быстрой загрузки
+            if(data[i]['country'] == 'AZ' || data[i]['country'] == 'GE' || 
+            data[i]['name'] == 'London' || data[i]['name'] == 'Moscow')
             out += `<option class="city" value="${data[i]['name']}" id="${data[i]['id']}">${data[i]['name']}, ${data[i]['country']}</option>`;
         };
         document.querySelector('#cities').innerHTML = out;
         
         let getCityId = document.querySelector('#search');
-        let searchPlaceholder = getCityId.placeholder = `Search city... (${country})`;
+        let searchPlaceholder = getCityId.placeholder = `Search city...`;
         getCityId.addEventListener('focus', function() {
             this.removeAttribute("placeholder");
         });

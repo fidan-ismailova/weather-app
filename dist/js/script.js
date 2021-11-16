@@ -241,18 +241,17 @@ var citiesList = "https://fidan-ismailova.github.io/database/openweathermap/city
 fetch(citiesList).then(function (resp) {
   return resp.json();
 }).then(function (data) {
-  var country = 'AZ';
   var out = '';
 
   for (var i = 0; i < data.length; i++) {
-    if (data[i]['country'] == country) // один из вариантов быстрой загрузки
-      out += "<option class=\"city\" value=\"".concat(data[i]['name'], "\" id=\"").concat(data[i]['id'], "\">").concat(data[i]['name'], ", ").concat(data[i]['country'], "</option>");
+    // один из вариантов быстрой загрузки
+    if (data[i]['country'] == 'AZ' || data[i]['country'] == 'GE' || data[i]['name'] == 'London' || data[i]['name'] == 'Moscow') out += "<option class=\"city\" value=\"".concat(data[i]['name'], "\" id=\"").concat(data[i]['id'], "\">").concat(data[i]['name'], ", ").concat(data[i]['country'], "</option>");
   }
 
   ;
   document.querySelector('#cities').innerHTML = out;
   var getCityId = document.querySelector('#search');
-  var searchPlaceholder = getCityId.placeholder = "Search city... (".concat(country, ")");
+  var searchPlaceholder = getCityId.placeholder = "Search city...";
   getCityId.addEventListener('focus', function () {
     this.removeAttribute("placeholder");
   });
