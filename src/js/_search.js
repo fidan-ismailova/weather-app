@@ -5,10 +5,10 @@ fetch(citiesList)
     .then(function (data) {
         let out = '';
         for (let i = 0; i < data.length; i++) {
-            // один из вариантов быстрой загрузки
+            // one of the fast boot options -> otherwise freezes!!!
             if(data[i]['country'] == 'AZ' || data[i]['country'] == 'GE' || 
             data[i]['name'] == 'London' || data[i]['name'] == 'Moscow')
-            out += `<option class="city" value="${data[i]['name']}" id="${data[i]['id']}">${data[i]['name']}, ${data[i]['country']}</option>`;
+            out += `<option class="city" value="${data[i]['name']}, ${data[i]['country']} (${data[i]['id']})" id="${data[i]['id']}">${data[i]['name']}</option>`;
         };
         document.querySelector('#cities').innerHTML = out;
         
@@ -22,14 +22,14 @@ fetch(citiesList)
         });
 
         let city = document.querySelectorAll('.city');
-        for (let i = 0; i < city.length; i++) {
-            getCityId.addEventListener('input', function() {
-                if(city[i].value == this.value) {
+        getCityId.addEventListener('input', function() {
+            for (let i = 0; i < city.length; i++) {
+                if(this.value == city[i].value) {
                     cityId = city[i].id;
                     return getWeather();
                 }
-            });
-        }
+            }
+        });
     })
     .catch(function (err) {
         console.error('Error: ', err);

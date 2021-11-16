@@ -244,8 +244,8 @@ fetch(citiesList).then(function (resp) {
   var out = '';
 
   for (var i = 0; i < data.length; i++) {
-    // один из вариантов быстрой загрузки
-    if (data[i]['country'] == 'AZ' || data[i]['country'] == 'GE' || data[i]['name'] == 'London' || data[i]['name'] == 'Moscow') out += "<option class=\"city\" value=\"".concat(data[i]['name'], "\" id=\"").concat(data[i]['id'], "\">").concat(data[i]['name'], ", ").concat(data[i]['country'], "</option>");
+    // one of the fast boot options -> otherwise freezes!!!
+    if (data[i]['country'] == 'AZ' || data[i]['country'] == 'GE' || data[i]['name'] == 'London' || data[i]['name'] == 'Moscow') out += "<option class=\"city\" value=\"".concat(data[i]['name'], ", ").concat(data[i]['country'], " (").concat(data[i]['id'], ")\" id=\"").concat(data[i]['id'], "\">").concat(data[i]['name'], "</option>");
   }
 
   ;
@@ -259,19 +259,14 @@ fetch(citiesList).then(function (resp) {
     this.setAttribute("placeholder", searchPlaceholder);
   });
   var city = document.querySelectorAll('.city');
-
-  var _loop = function _loop(_i) {
-    getCityId.addEventListener('input', function () {
-      if (city[_i].value == this.value) {
+  getCityId.addEventListener('input', function () {
+    for (var _i = 0; _i < city.length; _i++) {
+      if (this.value == city[_i].value) {
         cityId = city[_i].id;
         return getWeather();
       }
-    });
-  };
-
-  for (var _i = 0; _i < city.length; _i++) {
-    _loop(_i);
-  }
+    }
+  });
 })["catch"](function (err) {
   console.error('Error: ', err);
 });
