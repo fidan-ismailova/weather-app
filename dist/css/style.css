@@ -218,7 +218,6 @@ button {
   margin: 10px;
   padding: 10px;
   width: 280px;
-  min-height: 400px;
   background-color: skyblue;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(31, 98, 239, 0.8)), to(rgba(26, 213, 252, 0.8)));
   background-image: -webkit-linear-gradient(rgba(31, 98, 239, 0.8), rgba(26, 213, 252, 0.8));
@@ -257,6 +256,7 @@ button {
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  min-height: 300px;
   padding: 10px;
 }
 
@@ -324,6 +324,7 @@ button {
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
+  min-height: 200px;
   padding: 10px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -368,7 +369,7 @@ button {
 
 .main__search .search__form #search {
   width: 280px;
-  padding: 10px 10px 10px 40px;
+  padding: 10px 5px 10px 40px;
   border: 1px solid #d3d3d3;
   background-color: ghostwhite;
   background-image: url("../images/search.svg");
@@ -406,10 +407,6 @@ button {
 
 .main__search .search__form #search::placeholder {
   font-family: monospace;
-}
-
-.main__search .search__form #cities {
-  overflow-y: auto;
 }
 
 .footer {
