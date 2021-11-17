@@ -1,3 +1,5 @@
+let favicon;
+let weatherIcon;
 let url = 'http://api.openweathermap.org/data/2.5/';
 let appid = '964803496e3c6de740a91f74c80c8273'; // API key
 let lang = 'en';
@@ -25,6 +27,14 @@ switch (units) {
 const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${appid}&units=${units}&lang=${lang}`)
     .then(function (resp) { return resp.json() })
     .then(function (data) {
+        weatherIcon = `https://openweathermap.org/img/wn/${data.weather[0]['icon']}`;
+        document.querySelector('title').textContent = `WeatherForecast - ${data.name}`;
+        if(favicon) favicon.remove();
+        favicon = document.createElement('link');
+        favicon.rel = "shortcut icon";
+        favicon.type = "image/png";
+        favicon.href = `${weatherIcon}.png`;
+        document.head.append(favicon);
         document.querySelector('.card__date').textContent = '<date::time>';
         document.querySelector('.card__title').innerHTML = `${data.name} <span>${data.sys.country}</span>`;
         document.querySelector('.card__temp').innerHTML = Math.ceil(data.main.temp) + temp;
@@ -40,7 +50,7 @@ const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${appid}&units=
         document.querySelectorAll('.card__desc')[3].innerHTML = 
             `<svg viewBox="0 0 384 512" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg"><path fill="" d="M223.9 22.1c-8.7-28.8-53.9-30.1-63.8 0C109.1 179.8 0 222.7 0 333.9 0 432.3 85.9 512 192 512s192-79.7 192-178.1c0-111.7-108.9-153.3-160.1-311.8zM96 288c0-17.7 14.3-32 32-32s32 14.3 32 32-14.3 32-32 32-32-14.3-32-32zm49.5 131.8c-2.8 3.5-7.8 4-11.2 1.2l-12.5-10c-3.4-2.8-4-7.8-1.2-11.2l118-147.5c2.8-3.4 7.8-4 11.2-1.2l12.5 10c3.5 2.8 4 7.8 1.2 11.2l-118 147.5zM256 416c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path></svg>
             Humidity: ${data.main.humidity + hum}`;
-        document.querySelector('.card__icon').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@4x.png">`;
+        document.querySelector('.card__icon').innerHTML = `<img src="${weatherIcon}@4x.png">`;
     })
     .catch(function (error) {
         console.error('Error: ', error);

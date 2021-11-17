@@ -59,7 +59,7 @@ function browserSync() {
             baseDir: "./" + projectFolder + "/"
         },
         // browser: 'firefox',
-        // browser: 'chrome',   // only in Chrome -> 'Cannot GET /' -> works after reload page
+        // browser: 'chrome',   // 'Cannot GET /' -> works after reload page
         port: 3000,
         notify: false
     });

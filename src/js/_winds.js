@@ -202,6 +202,6 @@ const winds = [
 const getWind = (deg) => {
     for (let i = 0; i < winds.length; i++) {
         if(deg > (winds[i].deg - 5.625) && deg < (winds[i].deg + 5.625))
-            return winds[i].abbr;
+            return `<abbr title="${winds[i].name}">${winds[i].abbr}</abbr>`;
     }
 }
