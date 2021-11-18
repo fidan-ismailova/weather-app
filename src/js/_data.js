@@ -31,9 +31,10 @@ const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${appid}&units=
         document.querySelector('title').textContent = `WeatherForecast - ${data.name}`;
         if(favicon) favicon.remove();
         favicon = document.createElement('link');
-        favicon.rel = "shortcut icon";
+        favicon.rel = "icon";
         favicon.type = "image/png";
         favicon.href = `${weatherIcon}.png`;
+        favicon.sizes = "16x16 32x32";
         document.head.append(favicon);
         document.querySelector('.card__date').textContent = '<date::time>';
         document.querySelector('.card__title').innerHTML = `${data.name} <span>${data.sys.country}</span>`;

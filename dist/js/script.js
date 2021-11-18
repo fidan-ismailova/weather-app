@@ -229,9 +229,10 @@ var getWeather = function getWeather() {
     document.querySelector('title').textContent = "WeatherForecast - ".concat(data.name);
     if (favicon) favicon.remove();
     favicon = document.createElement('link');
-    favicon.rel = "shortcut icon";
+    favicon.rel = "icon";
     favicon.type = "image/png";
     favicon.href = "".concat(weatherIcon, ".png");
+    favicon.sizes = "16x16 32x32";
     document.head.append(favicon);
     document.querySelector('.card__date').textContent = '<date::time>';
     document.querySelector('.card__title').innerHTML = "".concat(data.name, " <span>").concat(data.sys.country, "</span>");
