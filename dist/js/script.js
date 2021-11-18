@@ -191,8 +191,7 @@ var getWind = function getWind(deg) {
 var favicon;
 var weatherIcon;
 var url = 'http://api.openweathermap.org/data/2.5/';
-var appid = '964803496e3c6de740a91f74c80c8273'; // API key
-
+var apiKey = '964803496e3c6de740a91f74c80c8273';
 var lang = 'en';
 var cityId = '2643743'; // London -> default id city for card
 
@@ -221,8 +220,18 @@ switch (units) {
     break;
 }
 
+var date = function date(tz) {
+  var d = new Date(new Date().getTime() + tz * 1000);
+  var tzStr = '';
+  var tzHour = Math.abs(tz / 3600);
+  tzStr += tz < 0 ? '-' : '+';
+  tzStr += tzHour < 10 ? '0' : '';
+  tzStr += tzHour != 0 ? tzHour * 100 : tzHour + '00';
+  return d.toUTCString() + tzStr;
+};
+
 var getWeather = function getWeather() {
-  return fetch("".concat(url, "weather?id=").concat(cityId, "&appid=").concat(appid, "&units=").concat(units, "&lang=").concat(lang)).then(function (resp) {
+  return fetch("".concat(url, "weather?id=").concat(cityId, "&appid=").concat(apiKey, "&units=").concat(units, "&lang=").concat(lang)).then(function (resp) {
     return resp.json();
   }).then(function (data) {
     weatherIcon = "https://openweathermap.org/img/wn/".concat(data.weather[0]['icon']);
@@ -234,7 +243,7 @@ var getWeather = function getWeather() {
     favicon.href = "".concat(weatherIcon, ".png");
     favicon.sizes = "16x16 32x32";
     document.head.append(favicon);
-    document.querySelector('.card__date').textContent = '<date::time>';
+    document.querySelector('.card__date').textContent = date(data.timezone);
     document.querySelector('.card__title').innerHTML = "".concat(data.name, " <span>").concat(data.sys.country, "</span>");
     document.querySelector('.card__temp').innerHTML = Math.ceil(data.main.temp) + temp;
     document.querySelectorAll('.card__desc')[0].textContent = data.weather[0]['description'];
@@ -264,8 +273,8 @@ fetch(citiesList).then(function (resp) {
   return resp.json();
 }).then(function (data) {
   for (var i = 0; i < data.length; i++) {
-    // one of the fast boot options -> otherwise freezes!!!
-    if (data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || data[i]['country'] == 'AZ' || data[i]['country'] == 'GE') {
+    // filter -> one of the fast boot options -> otherwise freezes!!!
+    if (data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || data[i]['country'] == 'AZ' || data[i]['country'] == 'SE' || data[i]['country'] == 'UA' || data[i]['name'] == 'Berlin' || data[i]['name'] == 'Mumbai' || data[i]['country'] == 'GE') {
       option = document.createElement('option');
       option.classList.add('city');
       option.id = data[i]['id'];

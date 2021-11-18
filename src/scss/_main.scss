@@ -29,10 +29,12 @@
             }
             &__date {
                 align-self: flex-end;
+                text-align: right;
                 color: orange;
-                text-shadow: 0 0 1em white;
+                text-shadow: 0 0 1em goldenrod;
                 font-family: monospace;
                 font-weight: bold;
+                font-size: .85rem;
             }
             &__title {
                 align-self: flex-start;
@@ -45,7 +47,9 @@
                     font-size: .8rem;
                 }
             }
-            &__icon {}
+            &__icon {
+                min-height: 200px;
+            }
             &__desc {
                 position: relative;
                 font-size: 0.9rem;

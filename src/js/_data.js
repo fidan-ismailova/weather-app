@@ -1,7 +1,7 @@
 let favicon;
 let weatherIcon;
 let url = 'http://api.openweathermap.org/data/2.5/';
-let appid = '964803496e3c6de740a91f74c80c8273'; // API key
+let apiKey = '964803496e3c6de740a91f74c80c8273';
 let lang = 'en';
 let cityId = '2643743'; // London -> default id city for card
 let units = 'metric';
@@ -23,8 +23,17 @@ switch (units) {
         hum = '&nbsp;%'
         break;
     }
+const date = (tz) => {
+    let d = new Date((new Date().getTime()) + (tz * 1000));
+    let tzStr = '';
+    let tzHour = Math.abs(tz / 3600);
+    tzStr += (tz < 0) ? '-' : '+';
+    tzStr += (tzHour < 10) ? '0' : '';
+    tzStr += (tzHour != 0) ? (tzHour * 100) : (tzHour + '00');
+    return d.toUTCString() + tzStr;
+}
 
-const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${appid}&units=${units}&lang=${lang}`)
+const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${apiKey}&units=${units}&lang=${lang}`)
     .then(function (resp) { return resp.json() })
     .then(function (data) {
         weatherIcon = `https://openweathermap.org/img/wn/${data.weather[0]['icon']}`;
@@ -36,7 +45,7 @@ const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${appid}&units=
         favicon.href = `${weatherIcon}.png`;
         favicon.sizes = "16x16 32x32";
         document.head.append(favicon);
-        document.querySelector('.card__date').textContent = '<date::time>';
+        document.querySelector('.card__date').textContent = date(data.timezone);
         document.querySelector('.card__title').innerHTML = `${data.name} <span>${data.sys.country}</span>`;
         document.querySelector('.card__temp').innerHTML = Math.ceil(data.main.temp) + temp;
         document.querySelectorAll('.card__desc')[0].textContent = data.weather[0]['description'];

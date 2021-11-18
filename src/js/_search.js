@@ -17,10 +17,13 @@ fetch(citiesList)
     .then(function (resp) { return resp.json() })
     .then(function (data) {
         for (let i = 0; i < data.length; i++) {
-            // one of the fast boot options -> otherwise freezes!!!
-            if(data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || 
-                data[i]['country'] == 'AZ' || data[i]['country'] == 'GE')
-            {
+            // filter -> one of the fast boot options -> otherwise freezes!!!
+            if (
+                data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || 
+                data[i]['country'] == 'AZ' || data[i]['country'] == 'SE' || 
+                data[i]['country'] == 'UA' || data[i]['name'] == 'Berlin' || 
+                data[i]['name'] == 'Mumbai' || data[i]['country'] == 'GE'
+            ) {
                 option = document.createElement('option');
                 option.classList.add('city');
                 option.id = data[i]['id'];

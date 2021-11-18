@@ -264,10 +264,12 @@ button {
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
+  text-align: right;
   color: orange;
-  text-shadow: 0 0 1em white;
+  text-shadow: 0 0 1em goldenrod;
   font-family: monospace;
   font-weight: bold;
+  font-size: 0.85rem;
 }
 
 .main__card .card__title {
@@ -283,6 +285,10 @@ button {
   display: block;
   margin: 0.5rem;
   font-size: 0.8rem;
+}
+
+.main__card .card__icon {
+  min-height: 200px;
 }
 
 .main__card .card__desc {
