@@ -230,8 +230,8 @@ var date = function date(tz) {
   return d.toUTCString() + tzStr;
 };
 
-var getWeather = function getWeather() {
-  return fetch("".concat(url, "weather?id=").concat(cityId, "&appid=").concat(apiKey, "&units=").concat(units, "&lang=").concat(lang)).then(function (resp) {
+var getWeather = function getWeather(id) {
+  return fetch("".concat(url, "weather?id=").concat(id, "&appid=").concat(apiKey, "&units=").concat(units, "&lang=").concat(lang)).then(function (resp) {
     return resp.json();
   }).then(function (data) {
     weatherIcon = "https://openweathermap.org/img/wn/".concat(data.weather[0]['icon']);
@@ -256,7 +256,7 @@ var getWeather = function getWeather() {
   });
 };
 
-getWeather();
+getWeather(cityId);
 var citiesList = "https://fidan-ismailova.github.io/database/openweathermap/city.list.min.json";
 var getCityId = document.querySelector('#search');
 getCityId.value = '';
@@ -274,7 +274,7 @@ fetch(citiesList).then(function (resp) {
 }).then(function (data) {
   for (var i = 0; i < data.length; i++) {
     // filter -> one of the fast boot options -> otherwise freezes!!!
-    if (data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || data[i]['country'] == 'AZ' || data[i]['country'] == 'SE' || data[i]['country'] == 'UA' || data[i]['name'] == 'Berlin' || data[i]['name'] == 'Mumbai' || data[i]['country'] == 'GE') {
+    if (data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || data[i]['country'] == 'AZ' || data[i]['country'] == 'UA' || data[i]['name'] == 'Berlin' || data[i]['name'] == 'Mumbai') {
       option = document.createElement('option');
       option.classList.add('city');
       option.id = data[i]['id'];
@@ -286,11 +286,12 @@ fetch(citiesList).then(function (resp) {
 
   ;
   var city = document.querySelectorAll('.city');
-  getCityId.addEventListener('input', function () {
+  getCityId.addEventListener('input', function (e) {
+    e.preventDefault();
+
     for (var _i = 0; _i < city.length; _i++) {
       if (this.value == city[_i].value) {
-        cityId = city[_i].id;
-        return getWeather();
+        getWeather(city[_i].id);
       }
     }
   });

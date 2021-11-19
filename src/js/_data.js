@@ -33,7 +33,7 @@ const date = (tz) => {
     return d.toUTCString() + tzStr;
 }
 
-const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${apiKey}&units=${units}&lang=${lang}`)
+const getWeather = (id) => fetch(`${url}weather?id=${id}&appid=${apiKey}&units=${units}&lang=${lang}`)
     .then(function (resp) { return resp.json() })
     .then(function (data) {
         weatherIcon = `https://openweathermap.org/img/wn/${data.weather[0]['icon']}`;
@@ -66,4 +66,4 @@ const getWeather = () => fetch(`${url}weather?id=${cityId}&appid=${apiKey}&units
         console.error('Error: ', error);
     });
 
-getWeather();
+getWeather(cityId);

@@ -20,9 +20,8 @@ fetch(citiesList)
             // filter -> one of the fast boot options -> otherwise freezes!!!
             if (
                 data[i]['name'] == 'London' || data[i]['name'] == 'Moscow' || 
-                data[i]['country'] == 'AZ' || data[i]['country'] == 'SE' || 
-                data[i]['country'] == 'UA' || data[i]['name'] == 'Berlin' || 
-                data[i]['name'] == 'Mumbai' || data[i]['country'] == 'GE'
+                data[i]['country'] == 'AZ' || data[i]['country'] == 'UA' || 
+                data[i]['name'] == 'Berlin' || data[i]['name'] == 'Mumbai'
             ) {
                 option = document.createElement('option');
                 option.classList.add('city');
@@ -34,11 +33,11 @@ fetch(citiesList)
         };
 
         let city = document.querySelectorAll('.city');
-        getCityId.addEventListener('input', function() {
+        getCityId.addEventListener('input', function(e) {
+            e.preventDefault();
             for (let i = 0; i < city.length; i++) {
                 if(this.value == city[i].value) {
-                    cityId = city[i].id;
-                    return getWeather();
+                    getWeather(city[i].id);
                 }
             }
         });
